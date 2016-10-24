@@ -1,0 +1,229 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+	<title>HOME</title>
+
+</h:head>
+
+<h:body>
+
+	<nav>
+		<div class="container" style="margin-top: 20px">
+			<h1>INCIDENCIAS</h1>
+		</div>
+	</nav>
+
+
+	<div style="margin-left: 50px; margin-top: -25px">
+
+		<table>
+	
+			<tr>
+				<td><div style="height: 30px"></div></td>
+			</tr>
+
+			<tr>
+				<td>
+					<div
+						style="width: 1350px; border: 3px groove #3B787E; background-color: #C1CACB; margin-left: -30px;">
+						<table style="margin-top: 2px">
+							<tr>
+
+								<td><h:button id="btnInicio" value="INICIO"
+										style="width:150px;height:30px"></h:button></td>
+								<td><h:button id="btnDetalle" value="DETALLE "
+										style="width:150px;height:30px"></h:button></td>
+								<td><h:button id="btnNuevo" value="NUEVO"
+										style="width:150px;height:30px"></h:button></td>
+								<td><h:button id="btnActualizar" value="ACTUALIZAR "
+										style="width:150px;height:30px"></h:button></td>
+
+								<td><h:button id="btnSeguimiento" value="SEGUIMIENTO "
+										disabled="true" style="width:150px;height:30px"></h:button></td>
+
+								<td><h:button id="btnEstado" value="ESTADO" disabled="true"
+										style="width:150px;height:30px"></h:button></td>
+								<td><h:button id="btnReporte" value="REPORTES"
+										style="width:150px;height:30px"></h:button></td>
+
+							</tr>
+						</table>
+					</div>
+				</td>
+
+
+			</tr>
+
+			<!--END-ENCABEZADO-->
+			<tr>
+
+				<td height="2"></td>
+
+			</tr>
+
+
+			<h:form>
+				<tr>
+					<td>
+						<div
+							style="width: 1350px; border: 3px groove #3B787E; background-color: #C1CACB; margin-left: -30px">
+
+							<table>
+								<tr>
+									<td style="color: black"><h:outputText value="CODIGO :" />
+									</td>
+									<td></td>
+
+									<td style="color: black"><h:inputText
+											style="width:150px;height:25px"
+											value="#{peliculaManagedBean.pelicula.tituloPelicula}"></h:inputText>
+									</td>
+
+									<td style="color: black"><h:commandButton value="Consulta"
+											style="width:150px;height:30px"
+											action="#{peliculaManagedBean.consultar}"></h:commandButton>
+									</td>
+									<td></td>
+
+
+
+
+								</tr>
+							</table>
+						</div>
+					</td>
+
+
+				</tr>
+
+				<tr>
+
+					<td height="2"></td>
+
+				</tr>
+
+
+				<!--BODY-GRILLA-->
+
+				<tr>
+
+					<td>
+						<div
+							style="width: 1350px; height: 500px; border: 3px groove #3B787E; background-color: #C1CACB; margin-left: -30px">
+							<div class="main clearfix">
+								<div class="column">
+
+
+
+
+									<table>
+										<tr>
+
+											<td>
+
+
+
+												<table style="background-color: #5c6d6c">
+
+													<caption>
+<!-- 														<div -->
+<!-- 															style="overflow-x: hidden; overflow-y: scroll; height: 494px"> -->
+
+
+
+															<h:dataTable
+																value="#{platoCartaManagedBean.lisPlatoCarta}" var="s"
+																border="1">
+
+																<h:column>
+																	<f:facet name="header">ID</f:facet>#{s.id}
+		</h:column>
+																<h:column>
+																	<f:facet name="header">NOMBRE</f:facet>#{s.nombre}
+		</h:column>
+																<h:column>
+																	<f:facet name="header">CATEGORIA</f:facet>#{s.categoria}
+		</h:column>
+																<h:column>
+																	<f:facet name="header">PRECIO</f:facet>#{s.precio}
+		</h:column>
+
+																<h:column>
+																	<f:facet name="header">PRECIO</f:facet>#{s.precio}
+		</h:column>
+
+																<h:column>
+																	<f:facet name="header">PRECIO</f:facet>#{s.precio}
+		</h:column>
+
+																<h:column>
+																	<f:facet name="header">PRECIO</f:facet>#{s.precio}
+		</h:column>
+
+																<h:column>
+																	<f:facet name="header">PRECIO</f:facet>#{s.precio}
+		</h:column>
+
+
+															</h:dataTable>
+
+
+<!-- 														</div> -->
+
+													</caption>
+												</table>
+
+
+
+
+
+											</td>
+
+
+
+
+										</tr>
+
+									</table>
+
+
+
+									<!--END-LIST-GRILLA-->
+
+
+
+
+								</div>
+
+							</div>
+						</div>
+					</td>
+
+
+				</tr>
+			</h:form>
+			<!--END-GRILLA-->
+
+		</table>
+		<!--        
+    </form>
+
+ -->
+	</div>
+
+
+	<script src="cssHome/js/jquery.min.js"></script>
+	<script src="cssHome/js/bootstrap.min.js"></script>
+	<script src="cssHome/js/jquery.easing.min.js"></script>
+	<script src="cssHome/js/jquery.scrollTo.js"></script>
+	<script src="cssHome/js/wow.min.js"></script>
+	<script src="cssHome/js/custom.js"></script>
+	<script src="cssHome/js/getSource.js"></script>
+
+</h:body>
+
+</html>
