@@ -2,6 +2,7 @@ package com.gi.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -20,9 +21,6 @@ public class Usuario implements Serializable {
 	@Column(name="APE_USU")
 	private String apeUsu;
 
-	@Column(name="COD_TIP")
-	private int codTip;
-
 	@Column(name="CON_TOT")
 	private String conTot;
 
@@ -34,6 +32,15 @@ public class Usuario implements Serializable {
 
 	@Column(name="USU_USU")
 	private String usuUsu;
+
+	//bi-directional many-to-one association to TbIncidencia
+	@OneToMany(mappedBy="tbUsuario")
+	private List<Incidencia> tbIncidencias;
+
+	//bi-directional many-to-one association to TbTipoUsuario
+	@ManyToOne
+	@JoinColumn(name="COD_TIP")
+	private TipoUsuario tbTipoUsuario;
 
 	public Usuario() {
 	}
@@ -52,14 +59,6 @@ public class Usuario implements Serializable {
 
 	public void setApeUsu(String apeUsu) {
 		this.apeUsu = apeUsu;
-	}
-
-	public int getCodTip() {
-		return this.codTip;
-	}
-
-	public void setCodTip(int codTip) {
-		this.codTip = codTip;
 	}
 
 	public String getConTot() {
@@ -92,6 +91,36 @@ public class Usuario implements Serializable {
 
 	public void setUsuUsu(String usuUsu) {
 		this.usuUsu = usuUsu;
+	}
+
+	public List<Incidencia> getTbIncidencias() {
+		return this.tbIncidencias;
+	}
+
+	public void setTbIncidencias(List<Incidencia> tbIncidencias) {
+		this.tbIncidencias = tbIncidencias;
+	}
+
+	public Incidencia addTbIncidencia(Incidencia tbIncidencia) {
+		getTbIncidencias().add(tbIncidencia);
+		tbIncidencia.setTbUsuario(this);
+
+		return tbIncidencia;
+	}
+
+	public Incidencia removeTbIncidencia(Incidencia tbIncidencia) {
+		getTbIncidencias().remove(tbIncidencia);
+		tbIncidencia.setTbUsuario(null);
+
+		return tbIncidencia;
+	}
+
+	public TipoUsuario getTbTipoUsuario() {
+		return this.tbTipoUsuario;
+	}
+
+	public void setTbTipoUsuario(TipoUsuario tbTipoUsuario) {
+		this.tbTipoUsuario = tbTipoUsuario;
 	}
 
 }

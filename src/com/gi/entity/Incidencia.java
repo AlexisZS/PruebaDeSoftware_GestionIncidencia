@@ -16,25 +16,16 @@ public class Incidencia implements Serializable {
 
 	@Id
 	@Column(name="COD_INC")
-	private int codInc;
+	private Integer codInc;
 
 	@Column(name="COD_AREA")
 	private int codArea;
-
-	@Column(name="COD_CAT")
-	private int codCat;
-
-	@Column(name="COD_EST")
-	private int codEst;
 
 	@Column(name="COD_PRI")
 	private int codPri;
 
 	@Column(name="COD_TEC")
 	private int codTec;
-
-	@Column(name="COD_USU")
-	private int codUsu;
 
 	@Column(name="DES_INC")
 	private String desInc;
@@ -53,14 +44,26 @@ public class Incidencia implements Serializable {
 	@Column(name="RUTA_DOC")
 	private String rutaDoc;
 
+	@ManyToOne
+	@JoinColumn(name="COD_CAT")
+	private Categoria tbCategoria;
+
+	@ManyToOne
+	@JoinColumn(name="COD_EST")
+	private Estado tbEstado;
+
+	@ManyToOne
+	@JoinColumn(name="COD_USU")
+	private Usuario tbUsuario;
+
 	public Incidencia() {
 	}
 
-	public int getCodInc() {
+	public Integer getCodInc() {
 		return this.codInc;
 	}
 
-	public void setCodInc(int codInc) {
+	public void setCodInc(Integer codInc) {
 		this.codInc = codInc;
 	}
 
@@ -70,22 +73,6 @@ public class Incidencia implements Serializable {
 
 	public void setCodArea(int codArea) {
 		this.codArea = codArea;
-	}
-
-	public int getCodCat() {
-		return this.codCat;
-	}
-
-	public void setCodCat(int codCat) {
-		this.codCat = codCat;
-	}
-
-	public int getCodEst() {
-		return this.codEst;
-	}
-
-	public void setCodEst(int codEst) {
-		this.codEst = codEst;
 	}
 
 	public int getCodPri() {
@@ -102,14 +89,6 @@ public class Incidencia implements Serializable {
 
 	public void setCodTec(int codTec) {
 		this.codTec = codTec;
-	}
-
-	public int getCodUsu() {
-		return this.codUsu;
-	}
-
-	public void setCodUsu(int codUsu) {
-		this.codUsu = codUsu;
 	}
 
 	public String getDesInc() {
@@ -151,5 +130,41 @@ public class Incidencia implements Serializable {
 	public void setRutaDoc(String rutaDoc) {
 		this.rutaDoc = rutaDoc;
 	}
+
+	public Categoria getTbCategoria() {
+		return this.tbCategoria;
+	}
+
+	public void setTbCategoria(Categoria tbCategoria) {
+		this.tbCategoria = tbCategoria;
+	}
+
+	public Estado getTbEstado() {
+		return this.tbEstado;
+	}
+
+	public void setTbEstado(Estado tbEstado) {
+		this.tbEstado = tbEstado;
+	}
+
+	public Usuario getTbUsuario() {
+		return this.tbUsuario;
+	}
+
+	public void setTbUsuario(Usuario tbUsuario) {
+		this.tbUsuario = tbUsuario;
+	}
+
+	@Override
+	public String toString() {
+		return "Incidencia [codInc=" + codInc + ", codArea=" + codArea
+				+ ", codPri=" + codPri + ", codTec=" + codTec + ", desInc="
+				+ desInc + ", fecReg=" + fecReg + ", fecSol=" + fecSol
+				+ ", resInc=" + resInc + ", rutaDoc=" + rutaDoc
+				+ ", tbCategoria=" + tbCategoria + ", tbEstado=" + tbEstado
+				+ ", tbUsuario=" + tbUsuario + "]";
+	}
+	
+	
 
 }

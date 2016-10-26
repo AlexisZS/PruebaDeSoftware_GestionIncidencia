@@ -12,6 +12,7 @@
 	<class>com.gi.entity.Usuario</class>
 	<class>com.gi.entity.TipoUsuario</class>
 
+
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd_gestionincidencia" />
 			<property name="javax.persistence.jdbc.user" value="root" />

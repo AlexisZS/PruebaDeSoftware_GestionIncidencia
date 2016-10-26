@@ -7,8 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.gi.entity.PlatoCarta;
 import com.gi.service.PlatoCartaService;
 import com.google.common.collect.Lists;
