@@ -4,56 +4,58 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the tb_incidencia database table.
  * 
  */
 @Entity
-@Table(name="tb_incidencia")
+@Table(name = "tb_incidencia")
 public class Incidencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="COD_INC")
+	@Column(name = "COD_INC")
 	private Integer codInc;
 
-	@Column(name="COD_AREA")
+	@Column(name = "COD_AREA")
 	private int codArea;
 
-	@Column(name="COD_PRI")
+	@Column(name = "COD_PRI")
 	private int codPri;
 
-	@Column(name="COD_TEC")
+	@Column(name = "COD_TEC")
 	private int codTec;
-
-	@Column(name="DES_INC")
+	
+	@Column(name = "DES_INC")
 	private String desInc;
+	
+	@Column(name = "TITU_INC")
+	private String tituInc;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="FEC_REG")
+	@Column(name = "FEC_REG")
 	private Date fecReg;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="FEC_SOL")
+	@Column(name = "FEC_SOL")
 	private Date fecSol;
 
-	@Column(name="RES_INC")
+	@Column(name = "RES_INC")
 	private String resInc;
 
-	@Column(name="RUTA_DOC")
+	@Column(name = "RUTA_DOC")
 	private String rutaDoc;
 
 	@ManyToOne
-	@JoinColumn(name="COD_CAT")
+	@JoinColumn(name = "COD_CAT")
 	private Categoria tbCategoria;
 
 	@ManyToOne
-	@JoinColumn(name="COD_EST")
+	@JoinColumn(name = "COD_EST")
 	private Estado tbEstado;
 
 	@ManyToOne
-	@JoinColumn(name="COD_USU")
+	@JoinColumn(name = "COD_USU")
 	private Usuario tbUsuario;
 
 	public Incidencia() {
@@ -91,6 +93,14 @@ public class Incidencia implements Serializable {
 		this.codTec = codTec;
 	}
 
+	public String getTituInc() {
+		return tituInc;
+	}
+
+	public void setTituInc(String tituInc) {
+		this.tituInc = tituInc;
+	}
+	
 	public String getDesInc() {
 		return this.desInc;
 	}
@@ -159,12 +169,9 @@ public class Incidencia implements Serializable {
 	public String toString() {
 		return "Incidencia [codInc=" + codInc + ", codArea=" + codArea
 				+ ", codPri=" + codPri + ", codTec=" + codTec + ", desInc="
-				+ desInc + ", fecReg=" + fecReg + ", fecSol=" + fecSol
-				+ ", resInc=" + resInc + ", rutaDoc=" + rutaDoc
+				+ desInc + ", resInc=" + resInc + ", rutaDoc=" + rutaDoc
 				+ ", tbCategoria=" + tbCategoria + ", tbEstado=" + tbEstado
 				+ ", tbUsuario=" + tbUsuario + "]";
 	}
-	
-	
 
 }

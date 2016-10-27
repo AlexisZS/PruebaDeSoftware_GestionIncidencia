@@ -4,35 +4,34 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the tb_categoria database table.
  * 
  */
 @Entity
-@Table(name="tb_categoria")
+@Table(name = "tb_categoria")
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="COD_CAT")
-	private int codCat;
+	@Column(name = "COD_CAT")
+	private Integer codCat;
 
-	@Column(name="DES_CAT")
+	@Column(name = "DES_CAT")
 	private String desCat;
 
-	//bi-directional many-to-one association to TbIncidencia
-	@OneToMany(mappedBy="tbCategoria")
+	// bi-directional many-to-one association to TbIncidencia
+	@OneToMany(mappedBy = "tbCategoria")
 	private List<Incidencia> tbIncidencias;
 
 	public Categoria() {
 	}
 
-	public int getCodCat() {
+	public Integer getCodCat() {
 		return this.codCat;
 	}
 
-	public void setCodCat(int codCat) {
+	public void setCodCat(Integer codCat) {
 		this.codCat = codCat;
 	}
 

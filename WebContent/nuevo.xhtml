@@ -101,17 +101,21 @@
 																	value="CODIGO :" /></font></td>
 
 														<td><font color="black"><h:outputText
-																	value="CATEGORIA :" /></font></td>
+																	value="TIPO DE INCIDENCIA :" /></font></td>
 													</tr>
 
 													<tr>
 														<td><h:inputText
 																style="border-top:solid 1px black;border-left:solid 1px black"
 																readonly="true"></h:inputText></td>
-														<td><h:selectOneMenu style="width:250px;height:30px">
-																<f:selectItems>
 
-																</f:selectItems>
+														<td><h:selectOneMenu style="width:250px;height:30px"
+																value="#{incidenciaManagedBean.incidencia.tbCategoria}">
+																<f:selectItem itemLabel="Selecciones Categoria"
+																	itemValue="Selecciones Categoria" />
+																<f:selectItems
+																	value="#{incidenciaManagedBean.listcategoria}" var="d"
+																	itemLabel="#{d.desCat}" itemValue="#{d.codCat}" />
 															</h:selectOneMenu></td>
 													</tr>
 
@@ -122,65 +126,87 @@
 																	value="ESTADO :" /></font></td>
 													</tr>
 													<tr>
-														<td><h:inputText style="width:500px"></h:inputText></td>
-														<td><h:selectOneMenu style="width:250px;height:30px">
-																<f:selectItems>
+														<td><h:inputText style="width:500px"
+																value="#{incidenciaManagedBean.incidencia.tituInc}"></h:inputText></td>
 
-																</f:selectItems>
+														<td><h:selectOneMenu style="width:250px;height:30px"
+																value="#{incidenciaManagedBean.incidencia.tbEstado}">
+																<f:selectItem itemLabel="Selecciones Estado"
+																	itemValue="Selecciones Estado" />
+																<f:selectItems
+																	value="#{incidenciaManagedBean.listEstados}" var="d"
+																	itemLabel="#{d.desEst}" itemValue="#{d.codEst}" />
 															</h:selectOneMenu></td>
 													</tr>
+
 													<tr>
 														<td><font color="black"><h:outputText
-																	value="AREA :" /></font></td>
+																	value="AREA DESIGNADA:" /></font></td>
 														<td><font color="black"><h:outputText
 																	value="TECNICO :" /></font></td>
 
 													</tr>
 													<tr>
 
-														<td><h:selectOneMenu style="width:250px;height:30px">
-																<f:selectItems>
+														<td><h:selectOneMenu style="width:250px;height:30px"
+																value="#{incidenciaManagedBean.incidencia.codArea}">
 
-																</f:selectItems>
+																<f:selectItem itemLabel="Selecciones Area"
+																	itemValue="Selecciones Area" />
+																<f:selectItem itemLabel="Area1" itemValue="Area1" />
+																<f:selectItem itemLabel="Area2" itemValue="Area2" />
+
 															</h:selectOneMenu></td>
-														<td><h:selectOneMenu style="width:250px;height:30px">
-																<f:selectItems>
 
-																</f:selectItems>
+														<td><h:selectOneMenu style="width:250px;height:30px"
+																value="#{incidenciaManagedBean.incidencia.tbUsuario}">
+																<f:selectItem itemLabel="Selecciones Tecnico"
+																	itemValue="Selecciones Tecnico" />
+																<f:selectItems
+																	value="#{incidenciaManagedBean.listUsuarios}" var="d"
+																	itemLabel="#{d.usuUsu}" itemValue="#{d.codUsu}" />
 															</h:selectOneMenu></td>
 													</tr>
+
 													<tr>
 														<td><font color="black"><h:outputText
 																	value="PRIORIDAD  :" /></font></td>
+														<td><font color="black"><h:outputText
+																	value="EVIDENCIA :" /></font></td>
 													</tr>
 													<tr>
-														<td><h:selectOneMenu style="width:250px;height:30px">
-																<f:selectItems>
-
-																</f:selectItems>
+														<td><h:selectOneMenu style="width:250px;height:30px"
+																value="#{incidenciaManagedBean.incidencia.codPri}">
+																<f:selectItem itemLabel="Selecciones Prioridad"
+																	itemValue="Selecciones Prioridad" />
+																<f:selectItem itemLabel="Prioridad1" itemValue="1" />
+																<f:selectItem itemLabel="Prioridad2" itemValue="2" />
 															</h:selectOneMenu></td>
+														<!-- 														<td><h:inputFile></h:inputFile></td> -->
 													</tr>
+
 													<tr>
 														<td><font color="black"><h:outputText
 																	value="DESCRIPCION :" /></font></td>
+
 													</tr>
 													<tr>
 														<td><h:inputTextarea
 																style="width:500px;height:170px;resize:none"
-																value="#{peliculaManagedBean.pelicula.descripcionPelicula}">
+																value="#{incidenciaManagedBean.incidencia.desInc}">
 															</h:inputTextarea></td>
-
-														<td>
-															<div
-																style="Z-INDEX: 0; BORDER-BOTTOM-STYLE: inset; background-color: white; BORDER-RIGHT-STYLE: inset; WIDTH: 500px; BORDER-TOP-STYLE: inset; HEIGHT: 120px; BORDER-LEFT-STYLE: inset; OVERFLOW: auto"
-																id="Div2"></div>
-														</td>
+														<td><h:commandButton value="Guardar"
+																action="#{incidenciaManagedBean.registrar}" /></td>
 													</tr>
 
 
 												</table>
 											</td>
 										</tr>
+										<tr>
+
+										</tr>
+
 									</table>
 									<!--END-LIST-GRILLA-->
 

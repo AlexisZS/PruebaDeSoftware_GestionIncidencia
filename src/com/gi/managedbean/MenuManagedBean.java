@@ -22,5 +22,9 @@ public class MenuManagedBean {
 	public String seguimiento() {
 		return "seguimiento";
 	}
+	
+	public String test() {
+		return "home2";
+	}
 
 }

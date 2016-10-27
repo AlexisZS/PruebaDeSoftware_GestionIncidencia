@@ -3,12 +3,9 @@ package com.gi.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gi.entity.Incidencia;
-
+import com.gi.entity.Estado;
 
 @Repository
-public interface IncidenciaRepository extends JpaRepository<Incidencia, Integer> {
+public interface EstadoRepository  extends JpaRepository<Estado,Integer>{
 
-	
-	
 }

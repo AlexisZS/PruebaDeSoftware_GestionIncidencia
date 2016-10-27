@@ -4,52 +4,51 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the tb_usuarios database table.
  * 
  */
 @Entity
-@Table(name="tb_usuarios")
+@Table(name = "tb_usuarios")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="COD_USU")
-	private int codUsu;
+	@Column(name = "COD_USU")
+	private Integer codUsu;
 
-	@Column(name="APE_USU")
+	@Column(name = "APE_USU")
 	private String apeUsu;
 
-	@Column(name="CON_TOT")
+	@Column(name = "CON_TOT")
 	private String conTot;
 
-	@Column(name="NOM_USU")
+	@Column(name = "NOM_USU")
 	private String nomUsu;
 
-	@Column(name="PWD_USU")
+	@Column(name = "PWD_USU")
 	private String pwdUsu;
 
-	@Column(name="USU_USU")
+	@Column(name = "USU_USU")
 	private String usuUsu;
 
-	//bi-directional many-to-one association to TbIncidencia
-	@OneToMany(mappedBy="tbUsuario")
+	// bi-directional many-to-one association to TbIncidencia
+	@OneToMany(mappedBy = "tbUsuario")
 	private List<Incidencia> tbIncidencias;
 
-	//bi-directional many-to-one association to TbTipoUsuario
+	// bi-directional many-to-one association to TbTipoUsuario
 	@ManyToOne
-	@JoinColumn(name="COD_TIP")
+	@JoinColumn(name = "COD_TIP")
 	private TipoUsuario tbTipoUsuario;
 
 	public Usuario() {
 	}
 
-	public int getCodUsu() {
+	public Integer getCodUsu() {
 		return this.codUsu;
 	}
 
-	public void setCodUsu(int codUsu) {
+	public void setCodUsu(Integer codUsu) {
 		this.codUsu = codUsu;
 	}
 

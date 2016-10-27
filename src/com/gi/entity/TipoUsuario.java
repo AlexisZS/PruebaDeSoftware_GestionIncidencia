@@ -4,35 +4,34 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the tb_tipo_usuario database table.
  * 
  */
 @Entity
-@Table(name="tb_tipo_usuario")
+@Table(name = "tb_tipo_usuario")
 public class TipoUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="COD_TIP_USU")
-	private int codTipUsu;
+	@Column(name = "COD_TIP_USU")
+	private Integer codTipUsu;
 
-	@Column(name="DES_TIPO_USU")
+	@Column(name = "DES_TIPO_USU")
 	private String desTipoUsu;
 
-	//bi-directional many-to-one association to TbUsuario
-	@OneToMany(mappedBy="tbTipoUsuario")
+	// bi-directional many-to-one association to TbUsuario
+	@OneToMany(mappedBy = "tbTipoUsuario")
 	private List<Usuario> tbUsuarios;
 
 	public TipoUsuario() {
 	}
 
-	public int getCodTipUsu() {
+	public Integer getCodTipUsu() {
 		return this.codTipUsu;
 	}
 
-	public void setCodTipUsu(int codTipUsu) {
+	public void setCodTipUsu(Integer codTipUsu) {
 		this.codTipUsu = codTipUsu;
 	}
 

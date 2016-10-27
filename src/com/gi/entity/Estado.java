@@ -4,35 +4,34 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the tb_estado database table.
  * 
  */
 @Entity
-@Table(name="tb_estado")
+@Table(name = "tb_estado")
 public class Estado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="COD_EST")
-	private int codEst;
+	@Column(name = "COD_EST")
+	private Integer codEst;
 
-	@Column(name="DES_EST")
+	@Column(name = "DES_EST")
 	private String desEst;
 
-	//bi-directional many-to-one association to TbIncidencia
-	@OneToMany(mappedBy="tbEstado")
+	// bi-directional many-to-one association to TbIncidencia
+	@OneToMany(mappedBy = "tbEstado")
 	private List<Incidencia> tbIncidencias;
 
 	public Estado() {
 	}
 
-	public int getCodEst() {
+	public Integer getCodEst() {
 		return this.codEst;
 	}
 
-	public void setCodEst(int codEst) {
+	public void setCodEst(Integer codEst) {
 		this.codEst = codEst;
 	}
 
