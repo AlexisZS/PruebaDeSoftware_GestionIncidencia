@@ -25,10 +25,10 @@ public class Incidencia implements Serializable {
 
 	@Column(name = "COD_TEC")
 	private int codTec;
-	
+
 	@Column(name = "DES_INC")
 	private String desInc;
-	
+
 	@Column(name = "TITU_INC")
 	private String tituInc;
 
@@ -48,18 +48,15 @@ public class Incidencia implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "COD_CAT")
-	private Categoria tbCategoria;
+	private Categoria categoria;
 
 	@ManyToOne
 	@JoinColumn(name = "COD_EST")
-	private Estado tbEstado;
+	private Estado estado;
 
 	@ManyToOne
 	@JoinColumn(name = "COD_USU")
-	private Usuario tbUsuario;
-
-	public Incidencia() {
-	}
+	private Usuario usuario;
 
 	public Integer getCodInc() {
 		return this.codInc;
@@ -100,7 +97,7 @@ public class Incidencia implements Serializable {
 	public void setTituInc(String tituInc) {
 		this.tituInc = tituInc;
 	}
-	
+
 	public String getDesInc() {
 		return this.desInc;
 	}
@@ -110,18 +107,35 @@ public class Incidencia implements Serializable {
 	}
 
 	public Date getFecReg() {
-		return this.fecReg;
+		Date date = null;
+		if (fecReg != null) {
+			date = new Date(fecReg.getTime());
+		}
+		return date;
 	}
 
 	public void setFecReg(Date fecReg) {
-		this.fecReg = fecReg;
+		if (fecReg != null) {
+			this.fecReg = new Date(fecReg.getTime());
+		} else {
+			this.fecReg = null;
+		}
 	}
 
 	public Date getFecSol() {
-		return this.fecSol;
+		Date date = null;
+		if (fecSol != null) {
+			date = new Date(fecSol.getTime());
+		}
+		return date;
 	}
 
 	public void setFecSol(Date fecSol) {
+		if (fecSol != null) {
+			this.fecSol = new Date(fecSol.getTime());
+		} else {
+			this.fecSol = null;
+		}
 		this.fecSol = fecSol;
 	}
 
@@ -141,37 +155,41 @@ public class Incidencia implements Serializable {
 		this.rutaDoc = rutaDoc;
 	}
 
-	public Categoria getTbCategoria() {
-		return this.tbCategoria;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setTbCategoria(Categoria tbCategoria) {
-		this.tbCategoria = tbCategoria;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
-	public Estado getTbEstado() {
-		return this.tbEstado;
+	public Estado getEstado() {
+		return estado;
 	}
 
-	public void setTbEstado(Estado tbEstado) {
-		this.tbEstado = tbEstado;
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
-	public Usuario getTbUsuario() {
-		return this.tbUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setTbUsuario(Usuario tbUsuario) {
-		this.tbUsuario = tbUsuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
 	public String toString() {
 		return "Incidencia [codInc=" + codInc + ", codArea=" + codArea
 				+ ", codPri=" + codPri + ", codTec=" + codTec + ", desInc="
-				+ desInc + ", resInc=" + resInc + ", rutaDoc=" + rutaDoc
-				+ ", tbCategoria=" + tbCategoria + ", tbEstado=" + tbEstado
-				+ ", tbUsuario=" + tbUsuario + "]";
+				+ desInc + ", tituInc=" + tituInc + ", fecReg=" + fecReg
+				+ ", fecSol=" + fecSol + ", resInc=" + resInc + ", rutaDoc="
+				+ rutaDoc + ", categoria=" + categoria + ", estado=" + estado
+				+ ", usuario=" + usuario + "]";
 	}
+	
+	
+	
 
 }

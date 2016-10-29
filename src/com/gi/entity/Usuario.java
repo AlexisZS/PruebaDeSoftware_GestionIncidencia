@@ -1,8 +1,13 @@
 package com.gi.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the tb_usuarios database table.
@@ -32,17 +37,9 @@ public class Usuario implements Serializable {
 	@Column(name = "USU_USU")
 	private String usuUsu;
 
-	// bi-directional many-to-one association to TbIncidencia
-	@OneToMany(mappedBy = "tbUsuario")
-	private List<Incidencia> tbIncidencias;
-
-	// bi-directional many-to-one association to TbTipoUsuario
 	@ManyToOne
 	@JoinColumn(name = "COD_TIP")
 	private TipoUsuario tbTipoUsuario;
-
-	public Usuario() {
-	}
 
 	public Integer getCodUsu() {
 		return this.codUsu;
@@ -90,28 +87,6 @@ public class Usuario implements Serializable {
 
 	public void setUsuUsu(String usuUsu) {
 		this.usuUsu = usuUsu;
-	}
-
-	public List<Incidencia> getTbIncidencias() {
-		return this.tbIncidencias;
-	}
-
-	public void setTbIncidencias(List<Incidencia> tbIncidencias) {
-		this.tbIncidencias = tbIncidencias;
-	}
-
-	public Incidencia addTbIncidencia(Incidencia tbIncidencia) {
-		getTbIncidencias().add(tbIncidencia);
-		tbIncidencia.setTbUsuario(this);
-
-		return tbIncidencia;
-	}
-
-	public Incidencia removeTbIncidencia(Incidencia tbIncidencia) {
-		getTbIncidencias().remove(tbIncidencia);
-		tbIncidencia.setTbUsuario(null);
-
-		return tbIncidencia;
 	}
 
 	public TipoUsuario getTbTipoUsuario() {

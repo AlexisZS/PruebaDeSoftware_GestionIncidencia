@@ -1,8 +1,11 @@
 package com.gi.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the tb_tipo_usuario database table.
@@ -20,13 +23,6 @@ public class TipoUsuario implements Serializable {
 	@Column(name = "DES_TIPO_USU")
 	private String desTipoUsu;
 
-	// bi-directional many-to-one association to TbUsuario
-	@OneToMany(mappedBy = "tbTipoUsuario")
-	private List<Usuario> tbUsuarios;
-
-	public TipoUsuario() {
-	}
-
 	public Integer getCodTipUsu() {
 		return this.codTipUsu;
 	}
@@ -41,28 +37,6 @@ public class TipoUsuario implements Serializable {
 
 	public void setDesTipoUsu(String desTipoUsu) {
 		this.desTipoUsu = desTipoUsu;
-	}
-
-	public List<Usuario> getTbUsuarios() {
-		return this.tbUsuarios;
-	}
-
-	public void setTbUsuarios(List<Usuario> tbUsuarios) {
-		this.tbUsuarios = tbUsuarios;
-	}
-
-	public Usuario addTbUsuario(Usuario tbUsuario) {
-		getTbUsuarios().add(tbUsuario);
-		tbUsuario.setTbTipoUsuario(this);
-
-		return tbUsuario;
-	}
-
-	public Usuario removeTbUsuario(Usuario tbUsuario) {
-		getTbUsuarios().remove(tbUsuario);
-		tbUsuario.setTbTipoUsuario(null);
-
-		return tbUsuario;
 	}
 
 }

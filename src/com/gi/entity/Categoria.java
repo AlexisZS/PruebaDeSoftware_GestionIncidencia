@@ -1,8 +1,11 @@
 package com.gi.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the tb_categoria database table.
@@ -20,13 +23,6 @@ public class Categoria implements Serializable {
 	@Column(name = "DES_CAT")
 	private String desCat;
 
-	// bi-directional many-to-one association to TbIncidencia
-	@OneToMany(mappedBy = "tbCategoria")
-	private List<Incidencia> tbIncidencias;
-
-	public Categoria() {
-	}
-
 	public Integer getCodCat() {
 		return this.codCat;
 	}
@@ -41,28 +37,6 @@ public class Categoria implements Serializable {
 
 	public void setDesCat(String desCat) {
 		this.desCat = desCat;
-	}
-
-	public List<Incidencia> getTbIncidencias() {
-		return this.tbIncidencias;
-	}
-
-	public void setTbIncidencias(List<Incidencia> tbIncidencias) {
-		this.tbIncidencias = tbIncidencias;
-	}
-
-	public Incidencia addTbIncidencia(Incidencia tbIncidencia) {
-		getTbIncidencias().add(tbIncidencia);
-		tbIncidencia.setTbCategoria(this);
-
-		return tbIncidencia;
-	}
-
-	public Incidencia removeTbIncidencia(Incidencia tbIncidencia) {
-		getTbIncidencias().remove(tbIncidencia);
-		tbIncidencia.setTbCategoria(null);
-
-		return tbIncidencia;
 	}
 
 }
