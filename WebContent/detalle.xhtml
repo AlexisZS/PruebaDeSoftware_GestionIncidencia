@@ -1,378 +1,83 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-
-  <title> INCIDENCIAS </title>
-
-   <link href="cssHome/css/bootstrap.css"  type="text/css"  rel="stylesheet" />
-    <link href="cssHome/font-awesome/css/font-awesome.min.css"  type="text/css"   rel="stylesheet" />
-    <link href="cssHome/ss/animate.css"  type="text/css"    rel="stylesheet" />
-    <link href="cssHome/css/style.css"  type="text/css"   rel="stylesheet" />
-    <link href="cssHome/color/default.css"  type="text/css"   rel="stylesheet" />
-
-
 </h:head>
 
-<h:body >
+<h:body>
+
+	<h:form>
+		<h2>INCIDENCIAS</h2>
+		<h:panelGrid columns="7">
+
+			<h:commandButton value="INICIO" action="#{menuManagedBean.inicio}"
+				style="width:150px;height:30px"></h:commandButton>
+
+			<h:commandButton value="DETALLE" style="width:150px;height:30px"></h:commandButton>
+
+			<h:commandButton value="NUEVO" action="#{menuManagedBean.nuevo}"
+				style="width:150px;height:30px"></h:commandButton>
+
+			<h:commandButton value="ACTUALIZAR "
+				action="#{menuManagedBean.inicio}" style="width:150px;height:30px"></h:commandButton>
+
+			<h:commandButton value="SEGUIMIENTO "
+				action="#{menuManagedBean.seguimiento}"
+				style="width:150px;height:30px"></h:commandButton>
+
+			<h:commandButton value="ESTADO" action="#{menuManagedBean.inicio}"
+				style="width:150px;height:30px"></h:commandButton>
+
+			<h:commandButton value="REPORTES" action="#{menuManagedBean.inicio}"
+				style="width:150px;height:30px"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+
+	<h:form>
+		<h:panelGrid columns="2">
+
+			<h:outputText value="CODIGO :" />
+			<h:outputText value="TIPO DE INCIDENCIA :" />
+			<h:inputText style="width:200px"
+				value="#{incidenciaManagedBean.incidencia.codInc}"></h:inputText>
+			<h:inputText style="width:200px"
+				value="#{incidenciaManagedBean.incidencia.categoria}"></h:inputText>
 
 
-
-    <nav >
-        <div class="container" style="margin-top:20px">
-            <div >
-                
-                <a>
-                    <h1>INCIDENCIAS</h1>
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-      <ul class="nav navbar-nav" style="margin-top:-70px">
-       	<li><a onclick="irHOME()" style="display:none">INICIO</a>  </li>
-        <li><a onclick="irVIDEOS()" style="display:none">VIDEOS</a></li>
-		<li><a onclick="irCLIENTES()" style="display:none">CLIENTES</a></li>		
-        <li><a onclick="irUSUARIOS()" style="display:none">USUARIOS</a></li>
-           <li><a href="../frond-end/index.xhtml" style="display:none" >VIDCON</a></li>  
-        <li><a onclick="salir()">SALIR</a></li>
-
-      </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    
-  
-   <div style="margin-left:160px;margin-top:-25px" >
-   <!-- <form >
-       
- --> 
-     <table>
-
-                  <tr>
-                            <td><div style="height:30px">
-
-                                </div>
-
-                            </td>
-                        </tr>
-
-            <!--ENCABEZADO-->
-
-                  <tr>
-                            <td>
-                                <div style="width:1350px;border:3px groove #3B787E;background-color:#C1CACB;margin-left:-30px;">
-                                    <table style="margin-top:2px " >
-                                        <tr>
-										
-											<td> 
-                                                <h:button id="btnInicio" value="INICIO"   style="width:150px;height:30px"></h:button>                                   
-                                                
-                                            </td>
-                                            <td> 
-                                                <h:button id="btnDetalle" value="DETALLE "   style="width:150px;height:30px"></h:button>                                   
-                                                
-                                            </td>
-                                            <td> 
-                                                <h:button id="btnNuevo" value="NUEVO"   style="width:150px;height:30px"></h:button>                                   
-                                                
-                                            </td>
-                                            <td> 
-                                                <h:button id="btnActualizar" value="ACTUALIZAR "   style="width:150px;height:30px"></h:button>                                   
-                                                
-                                            </td>
-                                           
-                                            <td> 
-                                                <h:button id="btnSeguimiento" value="SEGUIMIENTO " disabled="true"  style="width:150px;height:30px"></h:button>                                   
-                                                
-                                            </td>
-                                           
-                                             <td>                                                
-                                                    <h:button id="btnEstado" value="ESTADO"  disabled="true" style="width:150px;height:30px"></h:button>
-                                            </td>
-                                            <td>                                                
-                                                    <h:button id="btnReporte" value="REPORTES"   style="width:150px;height:30px"></h:button>
-                                            </td>
-
-                                        </tr>
-                                        </table>
-                                </div>
-                            </td>
+			<h:outputText value="RESUMEN :" />
+			<h:outputText value="ESTADO :" />
+			<h:inputText style="width:200px"
+				value="#{incidenciaManagedBean.incidencia.tituInc}"></h:inputText>
+			<h:inputText style="width:200px"
+				value="#{incidenciaManagedBean.incidencia.estado}"></h:inputText>
 
 
-                        </tr>
-
-            <!--END-ENCABEZADO-->
-					<tr>
-					
-						<td height="2">
-						     
-						</td>
-					
-					</tr>
-					
-					
-					
-					
-	<!-- 		<tr>
-                            <td>
-                                <div style="width:1350px;border:3px groove #3B787E;background-color:#C1CACB;margin-left:-30px ">
-                                    <table style="margin-top:3px ">
-                                        <tr>
-                                              
-                                                        
-                                                        <td>
-                                                          <h:button id="btnEditar" value="EDITAR" disabled="true"  style="width:150px;height:30px"></h:button>
-                                                           
-                                                        </td>
-                                                         <td>
-                                                          <h:button id="btnReporte" value="REPORTE" style="width:150px;height:30px"></h:button>
-                                                                                        		                                                             
-                                                        </td>                                                       
-                                                           <td>	
-                                                            <h:button id="btnImprimir" value="IMPRIMIR" style="width:150px;height:30px"></h:button>
-                                                            	                                                            		                                                             
-                                                        </td>                                                       
-                                                        
-
-                                        </tr>
-                                        </table>
-                                </div>
-                            </td>
+			<h:outputText value="AREA DESIGNADA:" />
+			<h:outputText value="TECNICO :" />
+			<h:inputText style="width:200px"
+				value="#{incidenciaManagedBean.incidencia.area}"></h:inputText>
+			<h:inputText style="width:200px"
+				value="#{incidenciaManagedBean.incidencia.tecnico}"></h:inputText>
 
 
-                        </tr>
+			<h:outputText value="PRIORIDAD  :" />
+			<h:outputText value="EVIDENCIA :" />
+			<h:inputText style="width:200px"
+				value="#{incidenciaManagedBean.incidencia.prioridad}"></h:inputText>
+			<h:inputText style="width:200px"></h:inputText>
 
-					
-					<tr>
-					
-						<td height="2">
-						     
-						</td>
-					
-					</tr>
-					
-				 -->
-					
-				<h:form>	
-					
-                        
-                      <tr>
-					
-						<td height="2">
-						     
-						</td>
-					
-					</tr>  
-					
+			<h:outputText value="DESCRIPCION :" />
+			<h:outputText value="LOG :" />
+			<h:inputTextarea style="width:200px;height:170px;resize:none"
+				value="#{incidenciaManagedBean.incidencia.desInc}">
+			</h:inputTextarea>
 
-            <!--BODY-GRILLA-->
-		   
-                   <tr>
-
-                            <td>
-                                <div style="width:1350px;height:500px;border:3px groove #3B787E;background-color:#C1CACB;margin-left:-30px">
-                                      <div class="main clearfix">
-						                <div class="column" >
-                                                   
-							                
-                                             
-
-                                                <table>
-                                                    <tr>
-
-                                                        <td>
-                                                           
-                                                          
-
-                                                                      <table style="margin-left:50px;margin-top:30px	" >                                                               
-                                                                       
-                                                                         
-                                                             					<tr>
-                                                                           			<td style="width:600px">                                                                           	
-                                                                           			<font color="black"><h:outputText value="CODIGO :" /></font>
-                                                                           				&nbsp;
-																						&nbsp;
-																						&nbsp;
-																					</td>
-																					
-																						
-																					
-																					<td>
-																					<font color="black"><h:outputText value="CATEGORIA :" /></font>
-																					</td>																					
-																				</tr>
-																				<tr>
-																					<td>
-																					<h:inputText style="border-top:solid 1px black;border-left:solid 1px black"  readonly="true"></h:inputText>
-																					</td>
-																					<td>
-																						<h:selectOneMenu
-																							 style="width:250px;height:30px">													
-																							<f:selectItems >
-																								
-																							</f:selectItems>
-																						</h:selectOneMenu>
-																					</td>										
-                                                                           		</tr>
-                                                                           
-                                                                           		<tr>
-                                                                           			<td style="width:50px">                                                                           	
-                                                                           				<font color="black"><h:outputText value="RESUMEN :" /></font>
-																					</td>
-																					<td>
-																						<font color="black"><h:outputText value="ESTADO :" /></font>
-																					</td>																					
-																				</tr>
-																				<tr>
-																					<td>
-																						<h:inputText style="width:500px"  ></h:inputText>
-																					</td>	
-																					<td>
-																						<h:selectOneMenu
-																							 style="width:250px;height:30px">													
-																							<f:selectItems >
-																								
-																							</f:selectItems>
-																						</h:selectOneMenu>
-																					</td>
-                                                                           		</tr>
-                                                                           		<tr>
-                                                                           			<td>
-                                                                           			<font color="black"><h:outputText value="AREA :" /></font>
-                                                                           			</td>
-                                                                           			<td>
-                                                                           				<font color="black"><h:outputText value="TECNICO :" /></font>
-                                                                           			</td>
-                                                                           			
-                                                                           		</tr>
-                                                                           		<tr>
-                                                                           			
-																					<td>
-																						<h:selectOneMenu
-																								 style="width:250px;height:30px">													
-																								<f:selectItems >
-																									
-																								</f:selectItems>
-																							</h:selectOneMenu>
-																					</td>
-																					<td>
-																						<h:selectOneMenu
-																									 style="width:250px;height:30px">													
-																									<f:selectItems >
-																										
-																									</f:selectItems>
-																								</h:selectOneMenu>
-																					</td>
-                                                                           		</tr>
-                                                                           		<tr>
-                                                                           			<td>
-                                                                           			<font color="black"><h:outputText value="PRIORIDAD  :" /></font>
-                                                                           			</td>
-                                                                           		</tr>
-                                                                           		<tr>
-                                                                           			<td>
-
-																							<h:selectOneMenu
-																								 style="width:250px;height:30px">													
-																								<f:selectItems >
-																									
-																								</f:selectItems>
-																							</h:selectOneMenu>																				
-																					
-																					</td>
-                                                                           		</tr>
-                                                                           		<tr>
-                                                                           			<td>
-                                                                           			<font color="black"><h:outputText value="DESCRIPCION :" /></font>
-                                                                           			</td>
-                                                                           		</tr>
-                                                                           		<tr>
-                                                                           			<td>
-																						<h:inputTextarea style="width:500px;height:170px;resize:none"  value="#{peliculaManagedBean.pelicula.descripcionPelicula}" > </h:inputTextarea>
-	
-																					
-																					</td>
-																					
-																					<td>
-																						 <div style="Z-INDEX: 0; BORDER-BOTTOM-STYLE: inset;background-color:white; BORDER-RIGHT-STYLE: inset; WIDTH: 500px; BORDER-TOP-STYLE: inset; HEIGHT: 120px; BORDER-LEFT-STYLE: inset; OVERFLOW: auto"
-												                                    		 id="Div2">
-                                                                                     
-                                                                                    
-                                                                                         </div>
-																					
-																					</td>
-																					
-																					
-                                                                           		</tr>
-                                                                           		
-                                                                           		
-                                                                      		                                                                    
-                                                                         
-                                                                          </table>
-																		</td>
-																		<td>
-																                                                             
-
-                                                          
-                                                               
+			<h:outputText value="LOG :" />
+		</h:panelGrid>
 
 
-                                                        </td>
-
-
-
-
-                                                    </tr>
-
-                                                    </table>
-							
-                                                                                  
-                                                
-<!--END-LIST-GRILLA-->
-                                               
-							                
-
-                                                
-						                </div>
-						                
-					                  </div>
-                                </div>
-                            </td>
-
-
-                        </tr>
-</h:form> 
-             <!--END-GRILLA-->
-             
-                    </table>
- <!--        
-    </form>
-
- -->
-    </div>
-
-
-	    <script src="cssHome/js/jquery.min.js"></script>
-    <script src="cssHome/js/bootstrap.min.js"></script>
-    <script src="cssHome/js/jquery.easing.min.js"></script>
-    <script src="cssHome/js/jquery.scrollTo.js"></script>
-    <script src="cssHome/js/wow.min.js"></script>
-    <script src="cssHome/js/custom.js"></script>
-     <script src="cssHome/js/getSource.js"></script>
-	
-
-
-
+	</h:form>
 </h:body>
-
-
- 
 </html>

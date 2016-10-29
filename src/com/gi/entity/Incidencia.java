@@ -17,20 +17,20 @@ public class Incidencia implements Serializable {
 	@Column(name = "COD_INC")
 	private Integer codInc;
 
-	@Column(name = "COD_AREA")
-	private int codArea;
+	@Column(name = "CATEGORIA")
+	private String categoria;
 
-	@Column(name = "COD_PRI")
-	private int codPri;
+	@Column(name = "RES_INC")
+	private String resInc;
 
-	@Column(name = "COD_TEC")
-	private int codTec;
+	@Column(name = "ESTADO")
+	private String estado;
 
-	@Column(name = "DES_INC")
-	private String desInc;
+	@Column(name = "AREA")
+	private String area;
 
-	@Column(name = "TITU_INC")
-	private String tituInc;
+	@Column(name = "PRIORIDAD")
+	private String prioridad;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "FEC_REG")
@@ -40,54 +40,67 @@ public class Incidencia implements Serializable {
 	@Column(name = "FEC_SOL")
 	private Date fecSol;
 
-	@Column(name = "RES_INC")
-	private String resInc;
+	@Column(name = "TITU_INC")
+	private String tituInc;
+
+	@Column(name = "DES_INC")
+	private String desInc;
 
 	@Column(name = "RUTA_DOC")
 	private String rutaDoc;
 
-	@ManyToOne
-	@JoinColumn(name = "COD_CAT")
-	private Categoria categoria;
+	@Column(name = "USUARIO")
+	private String usuario;
 
-	@ManyToOne
-	@JoinColumn(name = "COD_EST")
-	private Estado estado;
-
-	@ManyToOne
-	@JoinColumn(name = "COD_USU")
-	private Usuario usuario;
+	@Column(name = "TECNICO")
+	private String tecnico;
 
 	public Integer getCodInc() {
-		return this.codInc;
+		return codInc;
 	}
 
 	public void setCodInc(Integer codInc) {
 		this.codInc = codInc;
 	}
 
-	public int getCodArea() {
-		return this.codArea;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCodArea(int codArea) {
-		this.codArea = codArea;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
-	public int getCodPri() {
-		return this.codPri;
+	public String getResInc() {
+		return resInc;
 	}
 
-	public void setCodPri(int codPri) {
-		this.codPri = codPri;
+	public void setResInc(String resInc) {
+		this.resInc = resInc;
 	}
 
-	public int getCodTec() {
-		return this.codTec;
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setCodTec(int codTec) {
-		this.codTec = codTec;
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getPrioridad() {
+		return prioridad;
+	}
+
+	public void setPrioridad(String prioridad) {
+		this.prioridad = prioridad;
 	}
 
 	public String getTituInc() {
@@ -99,11 +112,35 @@ public class Incidencia implements Serializable {
 	}
 
 	public String getDesInc() {
-		return this.desInc;
+		return desInc;
 	}
 
 	public void setDesInc(String desInc) {
 		this.desInc = desInc;
+	}
+
+	public String getRutaDoc() {
+		return rutaDoc;
+	}
+
+	public void setRutaDoc(String rutaDoc) {
+		this.rutaDoc = rutaDoc;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getTecnico() {
+		return tecnico;
+	}
+
+	public void setTecnico(String tecnico) {
+		this.tecnico = tecnico;
 	}
 
 	public Date getFecReg() {
@@ -136,60 +173,6 @@ public class Incidencia implements Serializable {
 		} else {
 			this.fecSol = null;
 		}
-		this.fecSol = fecSol;
 	}
-
-	public String getResInc() {
-		return this.resInc;
-	}
-
-	public void setResInc(String resInc) {
-		this.resInc = resInc;
-	}
-
-	public String getRutaDoc() {
-		return this.rutaDoc;
-	}
-
-	public void setRutaDoc(String rutaDoc) {
-		this.rutaDoc = rutaDoc;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	@Override
-	public String toString() {
-		return "Incidencia [codInc=" + codInc + ", codArea=" + codArea
-				+ ", codPri=" + codPri + ", codTec=" + codTec + ", desInc="
-				+ desInc + ", tituInc=" + tituInc + ", fecReg=" + fecReg
-				+ ", fecSol=" + fecSol + ", resInc=" + resInc + ", rutaDoc="
-				+ rutaDoc + ", categoria=" + categoria + ", estado=" + estado
-				+ ", usuario=" + usuario + "]";
-	}
-	
-	
-	
 
 }

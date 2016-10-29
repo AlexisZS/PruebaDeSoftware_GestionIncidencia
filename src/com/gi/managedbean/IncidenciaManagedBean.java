@@ -1,11 +1,14 @@
 package com.gi.managedbean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.gi.entity.Categoria;
 import com.gi.entity.Estado;
@@ -21,41 +24,64 @@ import com.google.common.collect.Lists;
 @ManagedBean
 @SessionScoped
 public class IncidenciaManagedBean {
+	// incidenciaManagedBean
 
 	@ManagedProperty(value = "#{incidenciaService}")
-	IncidenciaService incidenciaService;
+	private IncidenciaService incidenciaService;
 
 	@ManagedProperty(value = "#{categoriaService}")
-	CategoriaService categoriaService;
+	private CategoriaService categoriaService;
 
 	@ManagedProperty(value = "#{estadoService}")
-	EstadoService estadoService;
+	private EstadoService estadoService;
 
 	@ManagedProperty(value = "#{tipoUsuarioService}")
-	TipoUsuarioService tipoUsuarioService;
+	private TipoUsuarioService tipoUsuarioService;
 
 	@ManagedProperty(value = "#{usuarioService}")
-	UsuarioService usuarioService;
+	private UsuarioService usuarioService;
 
-	List<Incidencia> listIncidencia = new ArrayList<Incidencia>();
-	Incidencia incidencia = new Incidencia();
+	private List<Incidencia> listIncidencia = new ArrayList<Incidencia>();
+	private Incidencia incidencia = new Incidencia();
 
-	List<Categoria> listcategoria = new ArrayList<Categoria>();
-	List<Estado> listEstados = new ArrayList<Estado>();
-	List<Usuario> listUsuarios = new ArrayList<Usuario>();
+	private List<Categoria> listcategoria = new ArrayList<Categoria>();
+	private List<Estado> listEstados = new ArrayList<Estado>();
+	private List<Usuario> listUsuarios = new ArrayList<Usuario>();
 
-	
-	
-	
-	public String registrar(){
+	public String registrar() {
+		incidencia.setFecReg(new Date());
 		incidenciaService.registar(incidencia);
 		listIncidencia = new ArrayList<Incidencia>();
 		incidencia = new Incidencia();
 		return "home";
 	}
+
+	public String detalle() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map params = context.getExternalContext().getRequestParameterMap();
+		String paramId = (String) params.get("codInc");
+		incidencia = incidenciaService.detalle(new Integer(paramId));
+
+		return "detalle";
+	}
 	
+	public String detalleUpdate() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map params = context.getExternalContext().getRequestParameterMap();
+		String paramId = (String) params.get("codInc");
+		incidencia = incidenciaService.detalle(new Integer(paramId));
+
+		return "actualizar";
+	}
 	
-	
+	public String actualizar() {
+		incidencia.setFecSol(new Date());
+		incidenciaService.registar(incidencia);
+		listIncidencia = new ArrayList<Incidencia>();
+		incidencia = new Incidencia();
+		return "home";
+	}
+
 	// --------------------------------------------------------------------------
 
 	public void setEstadoService(EstadoService estadoService) {

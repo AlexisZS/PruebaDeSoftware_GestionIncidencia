@@ -21,9 +21,13 @@ public class IncidenciaServiceImpl implements IncidenciaService {
 	}
 
 	@Override
-	public void registar(Incidencia incidencia) {
-		incidenciaRepository.save(incidencia);
+	public Incidencia registar(Incidencia incidencia) {
+		return incidenciaRepository.save(incidencia);
+	}
 
+	@Override
+	public Incidencia detalle(Integer codInc) {
+		return incidenciaRepository.findOne(codInc);
 	}
 
 }

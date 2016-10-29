@@ -2,177 +2,72 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-
 <h:head>
-	<title>HOME</title>
-	<link href="cssHome/css/bootstrap.css" type="text/css" rel="stylesheet" />
-	<link href="cssHome/font-awesome/css/font-awesome.min.css"
-		type="text/css" rel="stylesheet" />
-	<link href="cssHome/ss/animate.css" type="text/css" rel="stylesheet" />
-	<link href="cssHome/css/style.css" type="text/css" rel="stylesheet" />
-	<link href="cssHome/color/default.css" type="text/css" rel="stylesheet" />
+	<title>INCIDENCIAS</title>
 </h:head>
 
-<h:body>
+<h:form>
+	<h2>INCIDENCIAS</h2>
+	<h:panelGrid columns="7">
 
-	<nav>
-		<div class="container" style="margin-top: 20px">
-			<h1>INCIDENCIAS</h1>
-		</div>
-	</nav>
+		<h:commandButton value="INICIO" action="#{menuManagedBean.inicio}"
+			style="width:150px;height:30px"></h:commandButton>
 
-	<div style="margin-left: 50px; margin-top: -25px">
+		<h:commandButton value="DETALLE" style="width:150px;height:30px"></h:commandButton>
 
-		<h:form>
-			<table>
+		<h:commandButton value="NUEVO" action="#{menuManagedBean.nuevo}"
+			style="width:150px;height:30px"></h:commandButton>
 
-				<tr>
-					<td><div style="height: 30px"></div></td>
-				</tr>
+		<h:commandButton value="ACTUALIZAR "
+			action="#{menuManagedBean.inicio}" style="width:150px;height:30px"></h:commandButton>
 
-				<tr>
-					<td>
-						<div
-							style="width: 1350px; border: 3px groove #3B787E; background-color: #C1CACB; margin-left: -30px;">
-							<table style="margin-top: 2px">
-								<tr>
-									<td><h:commandButton value="INICIO"
-											action="#{menuManagedBean.inicio}"
-											style="width:150px;height:30px"></h:commandButton></td>
+		<h:commandButton value="SEGUIMIENTO "
+			action="#{menuManagedBean.seguimiento}"
+			style="width:150px;height:30px"></h:commandButton>
 
-									<td><h:commandButton value="DETALLE"
-											action="#{menuManagedBean.detalle}"
-											style="width:150px;height:30px"></h:commandButton></td>
+		<h:commandButton value="ESTADO" action="#{menuManagedBean.inicio}"
+			style="width:150px;height:30px"></h:commandButton>
 
-									<td><h:commandButton value="NUEVO"
-											action="#{menuManagedBean.nuevo}"
-											style="width:150px;height:30px"></h:commandButton></td>
+		<h:commandButton value="REPORTES" action="#{menuManagedBean.inicio}"
+			style="width:150px;height:30px"></h:commandButton>
+	</h:panelGrid>
+</h:form>
 
-									<td><h:commandButton value="ACTUALIZAR "
-											action="#{menuManagedBean.inicio}"
-											style="width:150px;height:30px"></h:commandButton></td>
+<h:form>
+	<h:dataTable value="#{incidenciaManagedBean.listIncidencia}" var="s"
+		border="1">
 
-									<td><h:commandButton value="SEGUIMIENTO "
-											action="#{menuManagedBean.seguimiento}"
-											style="width:150px;height:30px"></h:commandButton></td>
-
-									<td><h:commandButton value="ESTADO"
-											action="#{menuManagedBean.inicio}"
-											style="width:150px;height:30px"></h:commandButton></td>
-
-									<td><h:commandButton value="REPORTES"
-											action="#{menuManagedBean.inicio}"
-											style="width:150px;height:30px"></h:commandButton></td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-				<!--END-ENCABEZADO-->
-
-				<tr>
-					<td height="2"></td>
-				</tr>
-
-				<tr>
-					<td>
-						<div
-							style="width: 1350px; border: 3px groove #3B787E; background-color: #C1CACB; margin-left: -30px">
-							<table>
-								<tr>
-									<td style="color: black"><h:outputText value="CODIGO :" />
-									</td>
-									<td></td>
-									<!-- 									<td style="color: black"><h:inputText -->
-									<!-- 											style="width:150px;height:25px" -->
-									<!-- 											value="#{peliculaManagedBean.pelicula.tituloPelicula}"></h:inputText> -->
-									<!-- 									</td> -->
-
-									<!-- 									<td style="color: black"><h:commandButton value="Consulta" -->
-									<!-- 											style="width:150px;height:30px" -->
-									<!-- 											action="#{peliculaManagedBean.consultar}"></h:commandButton> -->
-									<!-- 									</td> -->
-									<td></td>
-								</tr>
-							</table>
-						</div>
-					</td>
-				</tr>
-
-				<tr>
-					<td height="2"></td>
-				</tr>
-
-				<!--BODY-GRILLA-->
-
-				<tr>
-					<td>
-						<div
-							style="width: 1350px; height: 500px; border: 3px groove #3B787E; background-color: #C1CACB; margin-left: -30px">
-							<div class="main clearfix">
-								<div class="column">
-									<table>
-										<tr>
-											<td>
-												<table style="background-color: #5c6d6c">
-													<caption>
-														<!-- 														<div -->
-														<!-- 															style="overflow-x: hidden; overflow-y: scroll; height: 494px"> -->
-
-
-														<h:dataTable
-															value="#{incidenciaManagedBean.listIncidencia}" var="s"
-															border="1">
-
-															<h:column>
-																<f:facet name="header">CODIGO</f:facet>#{s.codInc}
+		<h:column>
+			<f:facet name="header">CODIGO</f:facet>
+			<h:commandLink action="#{incidenciaManagedBean.detalle}">
+			#{s.codInc}
+			<f:param name="codInc" value="#{s.codInc}"></f:param>
+			</h:commandLink>
 		</h:column>
-															<h:column>
-																<f:facet name="header">CATEGORIA</f:facet>#{s.tbCategoria.desCat}
+
+		<h:column>
+			<f:facet name="header">CATEGORIA</f:facet>#{s.categoria}
 		</h:column>
-															<h:column>
-																<f:facet name="header">RESUMEN</f:facet>#{s.tituInc}
+		<h:column>
+			<f:facet name="header">RESUMEN</f:facet>#{s.tituInc}
 		</h:column>
-															<h:column>
-																<f:facet name="header">FECHA DE REGISTRO</f:facet>#{s.fecReg}
+		<h:column>
+			<f:facet name="header">FECHA DE REGISTRO</f:facet>#{s.fecReg}
 		</h:column>
-															<h:column>
-																<f:facet name="header">ESTADO</f:facet>#{s.tbEstado.desEst}
+		<h:column>
+			<f:facet name="header">ESTADO</f:facet>#{s.estado}
 		</h:column>
-															<h:column>
-																<f:facet name="header">PRIORIDAD</f:facet>#{s.codPri}
+		<h:column>
+			<f:facet name="header">PRIORIDAD</f:facet>#{s.prioridad}
 		</h:column>
-														</h:dataTable>
-
-
-														<!-- 														</div> -->
-													</caption>
-												</table>
-											</td>
-										</tr>
-									</table>
-									<!--END-LIST-GRILLA-->
-
-								</div>
-							</div>
-						</div>
-					</td>
-				</tr>
-
-				<!--END-GRILLA-->
-			</table>
-		</h:form>
-	</div>
-
-
-	<script src="cssHome/js/jquery.min.js"></script>
-	<script src="cssHome/js/bootstrap.min.js"></script>
-	<script src="cssHome/js/jquery.easing.min.js"></script>
-	<script src="cssHome/js/jquery.scrollTo.js"></script>
-	<script src="cssHome/js/wow.min.js"></script>
-	<script src="cssHome/js/custom.js"></script>
-	<script src="cssHome/js/getSource.js"></script>
-
-</h:body>
-
+		
+		<h:column>
+			<f:facet name="header"></f:facet>
+			<h:commandLink action="#{incidenciaManagedBean.detalleUpdate}">
+			Actualizar
+			<f:param name="codInc" value="#{s.codInc}"></f:param>
+			</h:commandLink>
+		</h:column>
+	</h:dataTable>
+</h:form>
 </html>

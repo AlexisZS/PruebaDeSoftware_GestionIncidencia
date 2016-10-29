@@ -7,5 +7,6 @@ import com.gi.entity.Incidencia;
 public interface IncidenciaService {
 
 	List<Incidencia>  getListIncidencia();
-	void registar(Incidencia incidencia);
+	Incidencia registar(Incidencia incidencia);
+	Incidencia detalle(Integer codInc);
 }
